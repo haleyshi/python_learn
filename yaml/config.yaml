@@ -1,0 +1,15 @@
+sgh:
+    infos:
+    - &trh
+        height: tall
+        money: rich
+        looks: handsome
+    - &spu
+        height: short
+        money: poor
+        looks: ugly
+    name:
+        first: Guohuang
+        last: Shi
+    sex: Male
+    info: *trh
