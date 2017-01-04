@@ -53,7 +53,7 @@ def txt2ppt(lines):
 
     slide = pres.Slides.Add(nslide, win32.constants.ppLayoutTitle)
     ppt.ActiveWindow.View.GotoSlide(nslide)
-    slide.Shapes(1).TextFrame.TextRange.Text = 'Thank\r\nYou!'.upper()
+    slide.Shapes(1).TextFrame.TextRange.Text = 'It is show time!'.upper()
     sleep(1)
     for i in range(3, 0, -1):
         slide.Shapes(2).TextFrame.TextRange.Text = str(i)
@@ -61,7 +61,7 @@ def txt2ppt(lines):
 
     pres.SlideShowSettings.ShowType = win32.constants.ppShowTypeSpeaker
     ss = pres.SlideShowSettings.Run()
-    pres.ApplyTemplate(r'C:\Users\eguoshi\AppData\Roaming\Microsoft\Templates\Welcome to PowerPoint.potx')
+    pres.ApplyTemplate(r'C:\Program Files (x86)\Microsoft Office\root\Templates\2052\Training.potx')
     slide.Shapes(1).TextFrame.TextRange.Text = 'BYE-BYE!'
     slide.Shapes(2).TextFrame.TextRange.Text = ''
 
