@@ -1,3 +1,4 @@
+# -*- coding: UTF-8 -*-
 '''
 阴阳师里面，N卡是二星的（几乎所有的卡初始都是二星的）。
 
@@ -10,22 +11,22 @@ So，
 假设我有一张升满到35级的SSR卡，还需要吃多少个N卡才能升到6星？
 每张N卡需要升那些等级的阶段（1-20， 20-25， 25-30）？
 
-请用小于20行代码求解。
+请用核心部分行数小于20行的代码求解。
 '''
 
 
-dog_food_n20 = {"n1": 1, "1_to_20": 1}
-dog_food_star3 = {"dog_food_n20": 1, "n1": 2}
-dog_food_n25 = {"dog_food_star3": 1, "20_to_25": 1}
+dog_food_n20 = {"card_n1": 1, "expr1_to_20": 1}
+dog_food_star3 = {"dog_food_n20": 1, "card_n1": 2}
+dog_food_n25 = {"dog_food_star3": 1, "expr20_to_25": 1}
 dog_food_star4 = {"dog_food_n25": 1, "dog_food_star3": 3}
-dog_food_n30 = {"dog_food_star4": 1, "25_to_30": 1}
+dog_food_n30 = {"dog_food_star4": 1, "expr25_to_30": 1}
 dog_food_star5 = {"dog_food_n30": 1, "dog_food_star4": 4}
 
-ssr4 = {"dog_food_star3": 3}
-ssr5 = {"dog_food_star4": 4}
-ssr6 = {"dog_food_star5": 5}
+star3_to_4 = {"dog_food_star3": 3}
+star4_to_5 = {"dog_food_star4": 4}
+star5_to_6 = {"dog_food_star5": 5}
 
-def convert(material=ssr4):
+def convert(material=star3_to_4):
     for req in material.keys():
         if req.startswith('dog_food'):
             for num in range(0, material[req]):
@@ -37,13 +38,13 @@ def convert(material=ssr4):
                 reqs[req] = material[req]
 
 reqs = {}
-convert(ssr6)
-print reqs
+convert(star5_to_6)
+print '5 to 6:', reqs
 
 reqs = {}
-convert(ssr5)
-print reqs
+convert(star4_to_5)
+print '4 to 5:', reqs
 
 reqs = {}
-convert(ssr4)
-print reqs
+convert(star3_to_4)
+print '3 to 4:', reqs
