@@ -23,6 +23,9 @@
                         <img src="{{ treasure.img_url }}" height="100">
                     </div>
                 </div>
+                {% if forloop.counter|divisibleby: 3 %}
+        </div><div class="row">
+                {% endif %}
             {% endfor %}
         </div>
     </main>
