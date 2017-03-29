@@ -6,18 +6,30 @@
     <meta charset="UTF-8">
     <title>TreasureGram</title>
     <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'bootstrap.min.css' %}" />
 </head>
 <body>
-    <h1>TreasureGram</h1>
-    {% for treasure in treasures %}
-        <p>{{ treasure.name }}</p>
-        {% if treasure.value > 0 %}
-            <p>{{ treasure.value }}</p>
-        {% else %}
-            <p>Unknown</p>
-        {% endif %}
-        <p>{{ treasure.material }}</p>
-        <p>{{ treasure.location }}</p>
-    {% endfor %}
+    <nav class="navbar navbar-default navbar-static-top text-center">
+        <a href="/">
+            <img src="{% static 'images/logo.png' %}" alt="TreasureGram">
+        </a>
+    </nav>
+    <main class="container" role="main">
+        <div class="treasure panel panel-default">
+            {% for treasure in treasures %}
+                <div class="panel-heading">
+                    <h2 class="panel-title">{{ treasure.name }}</h2>
+                </div>
+                <div class="panel-body">
+                    {{ treasure.material }}
+                    {% if treasure.value > 0 %}
+                        {{ treasure.value }}
+                    {% else %}
+                        Unknown
+                    {% endif %}
+                </div>
+            {% endfor %}
+        </div>
+    </main>
 </body>
 </html>
