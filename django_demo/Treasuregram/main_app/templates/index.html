@@ -1,41 +1,25 @@
-{% load staticfiles %}
+{% extends 'base.html' %}
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>TreasureGram</title>
-    <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}" />
-    <link rel="stylesheet" type="text/css" href="{% static 'bootstrap.min.css' %}" />
-</head>
-<body>
-    <nav class="navbar navbar-default navbar-static-top text-center">
-        <a href="/">
-            <img src="{% static 'images/logo.png' %}" alt="TreasureGram">
-        </a>
-    </nav>
-    <main class="container container--mw700">
-        <div class="row">
-            {% for treasure in treasures %}
-                <div class="col-md-4">
-                    <a href="/{{ treasure.id }}/">
-                        <div class="treasure panel panel-default">
-                            <div class="panel-heading">
-                                <h3 class="panel-title">{{ treasure.name }}</h3>
-                            </div>
-                            <div class="panel-body">
-                                <div class="treasure-photo-detail">
-                                    <img src="{{ treasure.img_url }}" height="200">
-                                </div>
+{% block content %}
+    <div class="row">
+        {% for treasure in treasures %}
+            <div class="col-md-4">
+                <a href="/{{ treasure.id }}/">
+                    <div class="treasure panel panel-default">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">{{ treasure.name }}</h3>
+                        </div>
+                        <div class="panel-body">
+                            <div class="treasure-photo-detail">
+                                <img src="{{ treasure.img_url }}" height="200">
                             </div>
                         </div>
-                    </a>
-                </div>
-                {% if forloop.counter|divisibleby:3 %}  <!-- 3 columns a row -->
-        </div><div class="row">
-                {% endif %}
-            {% endfor %}
-        </div>
-    </main>
-</body>
-</html>
+                    </div>
+                </a>
+            </div>
+            {% if forloop.counter|divisibleby:3 %}  <!-- 3 columns a row -->
+    </div><div class="row">
+            {% endif %}
+        {% endfor %}
+    </div>
+{% endblock %}
