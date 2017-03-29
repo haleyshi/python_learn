@@ -14,7 +14,7 @@
             <img src="{% static 'images/logo.png' %}" alt="TreasureGram">
         </a>
     </nav>
-    <main class="container" role="main">
+    <main class="container container--mw700">
         <div class="treasure panel panel-default">
             <div class="panel-heading">
                 <h3 class="panel-title">{{ treasure.name }}</h3>
@@ -49,9 +49,5 @@
             </div>
         </div>
     </main>
-
-
-    <p>{{ treasure.value }}</p>
-    <p>{{ treasure.location }}</p>
 </body>
 </html>
