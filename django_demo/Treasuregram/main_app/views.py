@@ -11,9 +11,9 @@ class Treasure:
         self.img_url = img_url
 
 treasures = [
-    Treasure("Gold Nugget", 500.00, "gold", "Curly's Creek, NM", 'treasuregram-gold-nugget.png'),
-    Treasure("Fool's Glod", 0, "pyrite", "Fool's Falls, CO", 'treasuregram-fools-gold.png'),
-    Treasure("Coffee Can", 500.00, "tin", "ACME, CA", 'treasuregram-coffee-can.png'),
+    Treasure("Gold Nugget", 500.00, "gold", "Curly's Creek, NM", 'http://courseware.codeschool.com/try_django/images/treasuregram-gold-nugget.png'),
+    Treasure("Fool's Glod", 0, "pyrite", "Fool's Falls, CO", 'http://courseware.codeschool.com/try_django/images/treasuregram-fools-gold.png'),
+    Treasure("Coffee Can", 500.00, "tin", "ACME, CA", 'http://courseware.codeschool.com/try_django/images/treasuregram-coffee-can.png'),
 ]
 
 def index(request):
