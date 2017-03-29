@@ -3,6 +3,8 @@ cd Treasuregram
 python manage.py runserver
 python manage.py startapp main_app
 
+
+
 %% Create models.py
 python manage.py makemigrations
         Migrations for 'main_app':
@@ -23,3 +25,12 @@ python manage.py shell
 >>> t.save()
 >>> Treasure.objects.all()
 >>> exit()
+
+
+
+
+python manage.py createsuperuser
+%% admin.site.register(Treasure) in admin.py
+
+http://127.0.0.1:8000/admin
+%% Manage Treasure objects
