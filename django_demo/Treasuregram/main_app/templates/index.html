@@ -21,12 +21,36 @@
                     <h2 class="panel-title">{{ treasure.name }}</h2>
                 </div>
                 <div class="panel-body">
-                    {{ treasure.material }}
-                    {% if treasure.value > 0 %}
-                        {{ treasure.value }}
-                    {% else %}
-                        Unknown
-                    {% endif %}
+                    <table class="treasure-table">
+                        <tr>
+                            <th>
+                                <img src="{% static 'images/material-icon.png' %}">
+                                Material:
+                            </th>
+                            <td>{{ treasure.material }}</td>
+                        </tr>
+                        <tr>
+                            <th>
+                                <img src="{% static 'images/value-icon.png' %}">
+                                Value:
+                            </th>
+                            <td>
+                                {% if treasure.value > 0 %}
+                                    {{ treasure.value }}
+                                {% else %}
+                                    Unknown
+                                {% endif %}
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                <img src="{% static 'images/location-icon.png' %}">
+                                Location:
+                            </th>
+                            <td>{{ treasure.location }}</td>
+                        </tr>
+                    </table>
+
                 </div>
             {% endfor %}
         </div>
