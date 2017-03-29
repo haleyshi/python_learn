@@ -34,3 +34,5 @@ python manage.py createsuperuser
 
 http://127.0.0.1:8000/admin
 %% Manage Treasure objects
+http://courseware.codeschool.com/try_django/images/treasuregram-arrowhead.png
+http://courseware.codeschool.com/try_django/images/treasuregram-horseshoes.png

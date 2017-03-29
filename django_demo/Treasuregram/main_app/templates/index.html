@@ -14,46 +14,14 @@
             <img src="{% static 'images/logo.png' %}" alt="TreasureGram">
         </a>
     </nav>
-    <main class="container" role="main">
-        <div class="treasure panel panel-default">
+    <main class="container container--mw700">
+        <div class="row">
             {% for treasure in treasures %}
-                <div class="panel-heading">
-                    <h2 class="panel-title">{{ treasure.name }}</h2>
-                </div>
-                <div class="panel-body">
-                    <div class="treasure-photo">
-                        <img src="{{ treasure.img_url }}" height="200">
+                <div class="col-md-4">
+                    <div class="treasure panel panel-default">
+                        {{ treasure.name }}
+                        <img src="{{ treasure.img_url }}" height="100">
                     </div>
-                    <table class="treasure-table">
-                        <tr>
-                            <th>
-                                <img src="{% static 'images/material-icon.png' %}">
-                                Material:
-                            </th>
-                            <td>{{ treasure.material }}</td>
-                        </tr>
-                        <tr>
-                            <th>
-                                <img src="{% static 'images/value-icon.png' %}">
-                                Value:
-                            </th>
-                            <td>
-                                {% if treasure.value > 0 %}
-                                    {{ treasure.value }}
-                                {% else %}
-                                    Unknown
-                                {% endif %}
-                            </td>
-                        </tr>
-                        <tr>
-                            <th>
-                                <img src="{% static 'images/location-icon.png' %}">
-                                Location:
-                            </th>
-                            <td>{{ treasure.location }}</td>
-                        </tr>
-                    </table>
-
                 </div>
             {% endfor %}
         </div>
