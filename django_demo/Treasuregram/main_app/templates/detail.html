@@ -1,0 +1,50 @@
+{% load staticfiles %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ treasure.name }}</title>
+</head>
+<body>
+    <main class="container" role="main">
+        <div class="treasure panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">{{ treasure.name }}</h3>
+            </div>
+            <div class="panel-body">
+                <div class="treasure-photo-detail">
+                    <img src="{{ treasure.img_url }}" height="200">
+                </div>
+                <table class="treasure-table">
+                    <tr>
+                        <th>
+                            <img src="{% static 'images/material-icon.png' %}">
+                            Material:
+                        </th>
+                        <td>{{ treasure.material }}</td>
+                    </tr>
+                    <tr>
+                        <th>
+                            <img src="{% static 'images/value-icon.png' %}">
+                            Value:
+                        </th>
+                        <td>{{ treasure.value }}</td>
+                    </tr>
+                    <tr>
+                        <th>
+                            <img src="{% static 'images/location-icon.png' %}">
+                            Location:
+                        </th>
+                        <td>{{ treasure.location }}</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </main>
+
+
+    <p>{{ treasure.value }}</p>
+    <p>{{ treasure.location }}</p>
+</body>
+</html>

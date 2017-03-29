@@ -18,10 +18,18 @@
         <div class="row">
             {% for treasure in treasures %}
                 <div class="col-md-4">
-                    <div class="treasure panel panel-default">
-                        {{ treasure.name }}
-                        <img src="{{ treasure.img_url }}" height="100">
-                    </div>
+                    <a href="/{{ treasure.id }}">
+                        <div class="treasure panel panel-default">
+                            <div class="panel-heading">
+                                <h3 class="panel-title">{{ treasure.name }}</h3>
+                            </div>
+                            <div class="panel-body">
+                                <div class="treasure-photo-detail">
+                                    <img src="{{ treasure.img_url }}" height="200">
+                                </div>
+                            </div>
+                        </div>
+                    </a>
                 </div>
                 {% if forloop.counter|divisibleby:3 %}  <!-- 3 columns a row -->
         </div><div class="row">
