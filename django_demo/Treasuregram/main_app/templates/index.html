@@ -8,7 +8,11 @@
     <h1>TreasureGram</h1>
     {% for treasure in treasures %}
         <p>{{ treasure.name }}</p>
-        <p>{{ treasure.value }}</p>
+        {% if treasure.value > 0 %}
+            <p>{{ treasure.value }}</p>
+        {% else %}
+            <p>Unknown</p>
+        {% endif %}
         <p>{{ treasure.material }}</p>
         <p>{{ treasure.location }}</p>
     {% endfor %}
