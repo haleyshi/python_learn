@@ -3,12 +3,16 @@
 /* ----- Bootstrap Theme ----- */
 
 body {
-  background:  #f3e1c5 url(images/brand-bg.jpg) no-repeat center top;
+  background:  #f3e1c5 url(../images/brand-bg.jpg) no-repeat center top;
   color: #263d2c;
 }
 
+h1 {
+  margin-top: 0px;
+}
+
 .container {
-  max-width: 700px;
+  max-width: 900px;
   padding-top: 40px;
 }
 
@@ -21,6 +25,15 @@ body {
 .navbar-default {
   background: #fdf9f0;
   border-color: #ece4cf;
+}
+
+.navbar-right {
+  margin-right: 5%;
+}
+
+.navbar-text {
+  font-size: 1.2em;
+  color: #263d2c;
 }
 
 .panel {
@@ -40,6 +53,12 @@ body {
 
 .panel-title {
   font-size: 1.5em;
+  color: #263d2c;
+}
+
+.panel-username {
+  margin-left: 10px;
+  font-size: 1.0em;
   color: #263d2c;
 }
 
@@ -71,12 +90,22 @@ body {
   padding: 20px;
   position: relative;
   text-align: center;
+  width: 100%;
+}
+
+.treasure-photo-detail {
+  background: #fdf2e1;
+  float: left;
+  margin-right: 5%;
+  padding: 20px;
+  position: relative;
+  text-align: center;
   width: 50%;
 }
 
 .treasure-photo img {
-  height: 180px;
-  max-width: 100%;
+  width: 180px;
+  max-height: 100%;
 }
 
 .treasure-table {
@@ -110,4 +139,18 @@ body {
 .treasure-table td:last-child {
   padding-left: 20px;
   width: 100%;
+}
+
+.fieldWrapper{
+ font-size: 10px;
+ color: #263d2c;
+ font-family: verdana, tahoma, serif;
+ white-space:nowrap;
+ display:inline;
+}
+
+.btn {
+  margin-top: 10px;
+  font-weight: bold;
+  font-size: 14px;
 }

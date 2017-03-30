@@ -5,18 +5,24 @@
     <div class="row">
         {% for treasure in treasures %}
             <div class="col-md-4">
-                <a href="/{{ treasure.id }}/">
-                    <div class="treasure panel panel-default">
-                        <div class="panel-heading">
-                            <h3 class="panel-title">{{ treasure.name }}</h3>
-                        </div>
-                        <div class="panel-body">
-                            <div class="treasure-photo-detail">
-                                <img src="{{ treasure.img_url }}" height="200">
-                            </div>
-                        </div>
+                <div class="treasure panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">{{ treasure.name }}</h3>
+                        <a class="panel-username" href="/user/{{treasure.user.username}}/">by: {{ treasure.user.username }}</a>
                     </div>
-                </a>
+                    <div class="panel-body">
+                        <a href="/{{ treasure.id }}/">
+                            <div class="treasure-photo">
+                                <img src="{{ treasure.image.url }}">
+                            </div>
+                        </a>
+                        <button id="likes" data-id="{{treasure.id}}" class="btn btn-mini btn-danger glyphicon glyphicon-heart" type="button">
+                            {% if treasure.likes > 0 %}
+                                {{ treasure.likes }}
+                            {% endif %}
+                        </button>
+                    </div>
+                </div>
             </div>
             {% if forloop.counter|divisibleby:3 %}  <!-- 3 columns a row -->
     </div><br><div class="row">
@@ -29,10 +35,12 @@
             <h3 class="panel-title">Add Treasure</h3>
         </div>
         <div class="panel-body">
-            <form action="post_url/" method="post">
+            <form enctype="multipart/form-data" action="post_url/" method="post">
                 {% csrf_token %}
-                {{ form.as_p }}
-                <input type="submit" value="Submit" />
+                <div vlass="field-wrapper">
+                    {{ form.as_p }}
+                </div>
+                <input type="submit" value="Add" />
             </form>
         </div>
     </div>

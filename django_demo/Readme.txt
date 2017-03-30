@@ -1,3 +1,5 @@
+pip install django
+
 django-admin startproject Treasuregram
 cd Treasuregram
 python manage.py runserver
@@ -36,3 +38,14 @@ http://127.0.0.1:8000/admin
 %% Manage Treasure objects
 http://courseware.codeschool.com/try_django/images/treasuregram-arrowhead.png
 http://courseware.codeschool.com/try_django/images/treasuregram-horseshoes.png
+
+
+## ImageField
+pip install pillow
+python manage.py makemigrations
+          main_app/migrations/0002_auto_20170330_0401.py:
+            - Remove field img_url from treasure
+            - Add field image to treasure
+%%python manage.py sqlmigrate main_app 0002
+python manage.py migrate
+
