@@ -57,7 +57,7 @@ def logout_view(request):
     return HttpResponseRedirect('/')
 
 def like_treasure(request):
-    treasure_id = request.GET.get('treasure_id', None)
+    treasure_id = request.POST.get('treasure_id', None)
 
     likes = 0
     if treasure_id:

@@ -4,7 +4,7 @@ $('button').on('click', function(event){
 
     $.ajax({
         url : '/like_treasure/',
-        type : 'GET',
+        type : 'POST',
         data : { treasure_id : $(this).attr("data-id")},
 
         success : function(data){
