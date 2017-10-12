@@ -1,0 +1,1 @@
+print 'reader2 package is imported!'
