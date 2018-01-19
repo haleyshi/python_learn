@@ -1,7 +1,4 @@
 # -*- coding: utf-8 -*-
-
-
-
 import numpy as np
 import cv2
 #from matplotlib import pyplot as plt
@@ -25,63 +22,26 @@ def hog(img):
 #    print type(hist)
     return hist
 
-#print glob(join(dirname(__file__)+'/cat','*.jpg'))
-img={}
-num=0
-for fn in glob(join(dirname(__file__)+'/cat', '*.jpg')):
-    img[num] = cv2.imread(fn,0)#参数加0，只读取黑白数据，去掉0，就是彩色读取。
-#    print img[num].shape
-    num=num+1
-print num,' num'
-positive=num
-for fn in glob(join(dirname(__file__)+'/other', '*.jpg')):
-    img[num] = cv2.imread(fn,0)#参数加0，只读取黑白数据，去掉0，就是彩色读取。
-#    print img[num].shape
-    num=num+1
-print num,' num'
-print positive,' positive'
-
-trainpic=[]
-for i in img:
-#    print type(i)
-    trainpic.append(img[i])
-
-svm_params = dict( kernel_type = cv2.SVM_LINEAR,
-                    svm_type = cv2.SVM_C_SVC,
-                    C=2.67, gamma=5.383 )
-
-temp=hog(img[0])
-print temp.shape
-
-#hogdata = [map(hog,img[i]) for i in img]
-hogdata = map(hog,trainpic)
-print np.float32(hogdata).shape,' hogdata'
-trainData = np.float32(hogdata).reshape(-1,bin_n*4)
-print trainData.shape,' trainData'
-responses = np.float32(np.repeat(1.0,trainData.shape[0])[:,np.newaxis])
-responses[positive:trainData.shape[0]]=-1.0
-#print responses[40:80]
-print responses.shape,' responses'
-print len(trainData)
-print len(responses)
-print type(trainData)
-
 svm = cv2.SVM()
 
 svm.load('svm_cat_data.dat')
 
-img = cv2.imread('/home/shiyanlou/predict/01.jpg',0)
-#print img.shapes,' img_test0'
-hogdata = hog(img)
-testData = np.float32(hogdata).reshape(-1,bin_n*4)
-print testData.shape,' testData'
-result = svm.predict(testData)
-print result
-if result > 0:
-    print 'this pic is a cat!'
+for fn in glob(join(dirname(__file__), 'predict', '*.jpg')):
+    img=cv2.imread(fn,0)#参数加0，只读取黑白数据，去掉0，就是彩色读取。
+    #print img.shapes,' img_test0'
+    hogdata = hog(img)
+    testData = np.float32(hogdata).reshape(-1,bin_n*4)
+    result = svm.predict(testData)
 
+    print fn, ">>>>>",
+    if result > 0:
+        print 'CAT'
+    else:
+        print 'NOT CAT'
+
+'''
 test_temp=[]
-for fn in glob(join(dirname(__file__)+'/predict', '*.jpg')):
+for fn in glob(join(dirname(__file__), 'predict', '*.jpg')):
     img=cv2.imread(fn,0)#参数加0，只读取黑白数据，去掉0，就是彩色读取。
     test_temp.append(img)
 print len(test_temp),' len(test_temp)'
@@ -91,7 +51,7 @@ testData = np.float32(hogdata).reshape(-1,bin_n*4)
 print testData.shape,' testData'
 result = [svm.predict(eachone) for eachone in testData]
 print result
-
+'''
 
 
 

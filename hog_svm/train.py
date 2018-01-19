@@ -26,19 +26,16 @@ def hog(img):
 #print glob(join(dirname(__file__)+'/cat','*.jpg'))
 img={}
 num=0
-for fn in glob(join(dirname(__file__)+'/cat', '*.jpg')):
+for fn in glob(join(dirname(__file__), 'cat', '*.jpg')):
     img[num] = cv2.imread(fn,0)#参数加0，只读取黑白数据，去掉0，就是彩色读取。
 #    print img[num].shape
     num=num+1
-print num,' num'
-print 'the file path is ', dirname(__file__)
+
 positive=num
-for fn in glob(join(dirname(__file__)+'/other', '*.jpg')):
+for fn in glob(join(dirname(__file__), 'other', '*.jpg')):
     img[num] = cv2.imread(fn,0)#参数加0，只读取黑白数据，去掉0，就是彩色读取。
 #    print img[num].shape
     num=num+1
-print num,' num'
-print positive,' positive'
 
 trainpic=[]
 for i in img:
@@ -59,21 +56,17 @@ svm_params = dict( kernel_type = cv2.SVM_LINEAR,
 #print temp
 #print len(temp)
 temp=hog(img[0])
-print temp.shape
 
 #hogdata = [map(hog,img[i]) for i in img]
 hogdata = map(hog,trainpic)
-print np.float32(hogdata).shape,' hogdata'
+
 trainData = np.float32(hogdata).reshape(-1,bin_n*4)
-print trainData.shape,' trainData'
+
 responses = np.float32(np.repeat(1.0,trainData.shape[0])[:,np.newaxis])
 responses[positive:trainData.shape[0]]=-1.0
-print responses.shape,' responses'
-print len(trainData)
-print len(responses)
-print type(trainData)
 
 svm = cv2.SVM()
 svm.train(trainData,responses, params=svm_params)
 svm.save('svm_cat_data.dat')
 
+print 'Finish the training with %d samples include %d positive ones, data stored in %s' % (num, positive, join(dirname(__file__), 'svm_cat_data.dat'))
